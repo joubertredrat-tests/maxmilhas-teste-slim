@@ -21,6 +21,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": ">=4.8 < 6.0",
+        "squizlabs/php_codesniffer": "*",
         "symfony/var-dumper": "^4.0"
     },
     "autoload-dev": {
@@ -35,7 +36,10 @@
     },
     "scripts": {
         "start": "php -S localhost:8080 -t public",
-        "test": "phpunit"
+        "test": "phpunit",
+        "psr2": [
+          "vendor/squizlabs/php_codesniffer/bin/phpcs --standard=PSR2 --extensions=php,inc,lib src/"
+        ]
     },
     "extra": {
         "patches": {

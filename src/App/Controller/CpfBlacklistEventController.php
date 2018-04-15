@@ -36,7 +36,7 @@ class CpfBlacklistEventController extends AbstractController
             $type = $request->getQueryParam('type', null);
             $cpf = $request->getQueryParam('cpf', null);
 
-            $apiListPresenter = $cpfBlacklistEventService->listEventsApi($sort, $cpf, $type);;
+            $apiListPresenter = $cpfBlacklistEventService->listEventsApi($sort, $cpf, $type);
 
             $responseData = $apiListPresenter->toArray();
             $statusCode = HttpResponse::OK;

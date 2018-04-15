@@ -27,22 +27,26 @@ class SchemaCreateCommand extends AbstractCommand implements CommandInterface
         /** @var \PDO $pdo */
         $pdo = $connection->getPdo();
 
-        $pdo->query('CREATE TABLE `cpf_blacklist` (
-                `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
-                `number` VARCHAR(11) NOT NULL,
-                `created_at` DATETIME NOT NULL,
-                `updated_at` DATETIME DEFAULT NULL
-            );'
-        );
+        $cpfBlacklistFields = [
+            '`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT',
+            '`number` VARCHAR(11) NOT NULL',
+            '`created_at` DATETIME NOT NULL',
+            '`updated_at` DATETIME DEFAULT NULL',
+        ];
 
-        $pdo->query('CREATE TABLE `cpf_blacklist_event` (
-                `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-                `type` VARCHAR(20) NOT NULL COLLATE BINARY,
-                `number` VARCHAR(11) DEFAULT NULL,
-                `created_at` DATETIME NOT NULL
-            )'
-        );
+        $queryCpfBlacklist = 'CREATE TABLE `cpf_blacklist` (' . implode(', ', $cpfBlacklistFields) . ')';
+        $pdo->query($queryCpfBlacklist);
 
+        $cpfBlacklistEventFields = [
+            '`id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT',
+            '`type` VARCHAR(20) NOT NULL COLLATE BINARY',
+            '`number` VARCHAR(11) NOT NULL',
+            '`created_at` DATETIME NOT NULL',
+        ];
+
+        $queryCpfBlacklist = 'CREATE TABLE `cpf_blacklist_event` (' . implode(', ', $cpfBlacklistEventFields) . ')';
+        $pdo->query($queryCpfBlacklist);
+        
         return "Schema created" . PHP_EOL;
     }
 }

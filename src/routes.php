@@ -7,6 +7,11 @@ $app->get(
 );
 
 $app->get(
+    '/docs',
+    'App\Controller\DocsController:showAction'
+);
+
+$app->get(
     '/status',
     'App\Controller\StatusController:showAction'
 );

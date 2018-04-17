@@ -15,5 +15,18 @@ return [
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+
+        // Database settings
+        'database' => [
+            'filePath' => __DIR__ . '/../db/file.sqlite'
+        ],
+
+        // Commands
+        'commands' => [
+            'db:database:create' => \App\Command\Database\DatabaseCreateCommand::class,
+            'db:database:drop' => \App\Command\Database\DatabaseDropCommand::class,
+            'db:schema:create' => \App\Command\Database\SchemaCreateCommand::class,
+            'db:schema:drop' => \App\Command\Database\SchemaDropCommand::class,
+        ],
     ],
 ];

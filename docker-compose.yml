@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+    maxmilhas-test-slim-nginx:
+        build:
+            context: .
+            dockerfile: ./scripts/docker/nginx/Dockerfile
+        ports:
+            - 3000:80
+        depends_on:
+            - maxmilhas-test-slim-php-fpm
+    maxmilhas-test-slim-php-fpm:
+        build:
+            context: .
+            dockerfile: ./scripts/docker/php-fpm/Dockerfile

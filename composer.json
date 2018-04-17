@@ -38,13 +38,13 @@
         "start": "php -S localhost:8080 -t public",
         "test": "phpunit",
         "psr2": [
-          "vendor/squizlabs/php_codesniffer/bin/phpcs --standard=PSR2 --extensions=php,inc,lib src/"
+            "vendor/squizlabs/php_codesniffer/bin/phpcs --standard=PSR2 --extensions=php,inc,lib src/"
         ]
     },
     "extra": {
         "patches": {
             "adrianfalleiro/slim-cli-runner": {
-                "Bug Something is wrong": "patches/8.diff"
+                "Error on get config": "patches/8.diff"
             }
         }
     }

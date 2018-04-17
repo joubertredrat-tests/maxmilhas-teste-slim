@@ -23,7 +23,10 @@ class DatabaseCreateCommand extends AbstractCommand implements CommandInterface
     public function command(array $args): string
     {
         $settings = $this->container->get('settings')['database'];
-        touch($settings['filePath']);
+
+        if (!file_exists($settings['filePath'])) {
+            touch($settings['filePath']);
+        }
 
         return "Database created" . PHP_EOL;
     }

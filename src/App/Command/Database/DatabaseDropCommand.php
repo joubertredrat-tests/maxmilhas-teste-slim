@@ -23,7 +23,10 @@ class DatabaseDropCommand extends AbstractCommand implements CommandInterface
     public function command(array $args): string
     {
         $settings = $this->container->get('settings')['database'];
-        unlink($settings['filePath']);
+
+        if (file_exists($settings['filePath'])) {
+            unlink($settings['filePath']);
+        }
 
         return "Database droped" . PHP_EOL;
     }

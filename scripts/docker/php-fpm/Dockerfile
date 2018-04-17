@@ -1,5 +1,4 @@
 FROM php:7.1-fpm-alpine
-#FROM php:7.1-fpm
 
 MAINTAINER Joubert RedRat <eu@redrat.com.br>
 
